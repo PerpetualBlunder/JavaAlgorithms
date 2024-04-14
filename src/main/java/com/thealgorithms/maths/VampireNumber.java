@@ -39,10 +39,10 @@ public class VampireNumber {
         System.out.println(res);
     }
 
-    static boolean isVampireNumber(int a, int b, boolean noPseudoVamireNumbers) {
+    static boolean isVampireNumber(int a, int b, boolean noPseudoVampireNumbers) {
         // this is for pseudoVampireNumbers  pseudovampire number need not be of length n/2 digits
         // for example 126 = 6 x 21
-        if (noPseudoVamireNumbers) {
+        if (noPseudoVampireNumbers) {
             if (a * 10 <= b || b * 10 <= a) {
                 return false;
             }
@@ -53,6 +53,23 @@ public class VampireNumber {
 
         return mulDigits.equals(faktorDigits);
     }
+
+    // check if a number is a vampire number
+    static boolean isVampireNumber(int num) {
+        String numStr = Integer.toString(num);
+        int numDigits = numStr.length();
+
+        if (numDigits % 2 != 0) {
+            return false;
+        }
+        
+        int numDigitsHalf = numDigits / 2;
+        int num1 = Integer.parseInt(numStr.substring(0, numDigitsHalf));
+        int num2 = Integer.parseInt(numStr.substring(numDigitsHalf));
+
+        return isVampireNumber(num1, num2, true);
+    }
+
 
     // methode to Split the numbers to Digits
     static String splitIntoDigits(int num, int num2) {

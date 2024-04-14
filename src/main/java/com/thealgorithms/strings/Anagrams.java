@@ -135,7 +135,7 @@ public class Anagrams {
         // string and decrementing the frequency of each character in the second string.
         for (int i = 0; i < s.length(); i++) {
             int pos1 = s.charAt(i) - 'a';
-            int pos2 = s.charAt(i) - 'a';
+            int pos2 = t.charAt(i) - 'a';
             freq[pos1]++;
             freq[pos2]--;
         }
